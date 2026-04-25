@@ -2,6 +2,8 @@
 backend/node_modules/
 backend/dist/
 backend/.env
+backend/package-lock.json
+backend/src/scripts/
 
 # ─── Flutter ──────────────────────────────────────────────────────
 staff_app_flutter/.dart_tool/
@@ -10,6 +12,19 @@ staff_app_flutter/.flutter-plugins-dependencies
 staff_app_flutter/build/
 staff_app_flutter/.packages
 staff_app_flutter/pubspec.lock
+
+# Platform folders (web-only demo)
+staff_app_flutter/android/
+staff_app_flutter/ios/
+staff_app_flutter/linux/
+staff_app_flutter/macos/
+staff_app_flutter/windows/
+staff_app_flutter/test/
+
+# ─── Symlinks / old folders ────────────────────────────────────────
+flutter_sdk
+guest-web
+staff-app
 
 # ─── macOS ────────────────────────────────────────────────────────
 .DS_Store
