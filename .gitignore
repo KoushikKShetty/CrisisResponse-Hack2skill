@@ -1,0 +1,21 @@
+# ─── Backend ──────────────────────────────────────────────────────
+backend/node_modules/
+backend/dist/
+backend/.env
+
+# ─── Flutter ──────────────────────────────────────────────────────
+staff_app_flutter/.dart_tool/
+staff_app_flutter/.flutter-plugins
+staff_app_flutter/.flutter-plugins-dependencies
+staff_app_flutter/build/
+staff_app_flutter/.packages
+staff_app_flutter/pubspec.lock
+
+# ─── macOS ────────────────────────────────────────────────────────
+.DS_Store
+**/.DS_Store
+
+# ─── IDE ──────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
