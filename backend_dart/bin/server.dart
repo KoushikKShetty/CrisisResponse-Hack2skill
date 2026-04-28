@@ -36,6 +36,56 @@ void main() async {
   // ── 4. Build router ─────────────────────────────────────────────
   final app = Router();
 
+  // Root landing page
+  app.get('/', (Request req) => Response.ok(
+        '''<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CrisisSync — AI Crisis Response</title>
+  <style>
+    body { background: #0a0f1e; color: #e2e8f0; font-family: system-ui, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .card { background: #111827; border: 1px solid #1e3a5f; border-radius: 16px; padding: 40px; max-width: 560px; width: 90%; }
+    h1 { color: #06b6d4; font-size: 2rem; margin: 0 0 8px; }
+    .tag { background: #0e7490; color: #fff; font-size: 11px; padding: 4px 10px; border-radius: 99px; letter-spacing: 1px; font-weight: bold; }
+    .status { display: flex; align-items: center; gap: 8px; margin: 24px 0 16px; }
+    .dot { width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; }
+    .endpoints { background: #0a0f1e; border-radius: 10px; padding: 16px; margin-top: 20px; }
+    .endpoints a { color: #06b6d4; text-decoration: none; display: block; padding: 6px 0; font-size: 13px; font-family: monospace; }
+    .endpoints a:hover { color: #fff; }
+    .badge { display: inline-block; background: #1e3a5f; border-radius: 6px; padding: 3px 8px; font-size: 11px; margin: 4px 2px; color: #93c5fd; }
+    p { color: #94a3b8; line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div><span class="tag">SOLUTION CHALLENGE 2026</span></div>
+    <h1 style="margin-top:16px">CrisisSync</h1>
+    <p style="margin:0 0 4px; color:#06b6d4; font-weight:600">AI-Powered Crisis Response for Hospitality</p>
+    <div class="status">
+      <div class="dot"></div>
+      <span style="color:#22c55e; font-weight:bold; font-size:13px">SYSTEM LIVE — DART BACKEND ONLINE</span>
+    </div>
+    <p>Real-time hotel emergency detection, AI triage via Vertex AI (Gemini 2.5 Flash), 3-tier escalation, and first responder dispatch — all in under 2 seconds.</p>
+    <div>
+      <span class="badge">Vertex AI</span>
+      <span class="badge">Gemini 2.5 Flash</span>
+      <span class="badge">Firebase RTDB</span>
+      <span class="badge">Gemma RAG</span>
+      <span class="badge">WebSocket</span>
+    </div>
+    <div class="endpoints">
+      <a href="/health">GET /health — System status</a>
+      <a href="/news/latest">GET /news/latest — Live threat intel</a>
+      <a href="/rag/protocol">POST /rag/protocol — AI crisis protocol</a>
+    </div>
+  </div>
+</body>
+</html>''',
+        headers: {'Content-Type': 'text/html'},
+      ));
+
   // Health check
   app.get('/health', (Request req) => Response.ok(
         jsonEncode({
