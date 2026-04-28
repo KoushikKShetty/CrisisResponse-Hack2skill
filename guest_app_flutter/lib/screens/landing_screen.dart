@@ -23,7 +23,7 @@ class _LandingScreenState extends State<LandingScreen>
 
   late AnimationController _pulse;
 
-  static const String _backendUrl = 'http://localhost:8080';
+  static const String _backendUrl = 'https://crisisync-backend-879514332143.us-central1.run.app';
 
   @override
   void initState() {
