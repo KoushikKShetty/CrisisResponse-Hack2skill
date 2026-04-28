@@ -27,8 +27,8 @@ class _ChatScreenState extends State<ChatScreen>
 
   final List<Map<String, dynamic>> _messages = [];
 
-  static const String _baseUrl = 'http://localhost:8080';
-  static const String _wsUrl = 'ws://localhost:8080/ws';
+  static const String _baseUrl = 'https://crisisync-backend-879514332143.us-central1.run.app';
+  static const String _wsUrl = 'wss://crisisync-backend-879514332143.us-central1.run.app/ws';
 
   // Simulated staff identity for demo
   static const String _myAvatar = 'AR';

@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   // ─── Change this to your backend URL ───
-  static const String _baseUrl = 'http://localhost:8080';
+  static const String _baseUrl = 'https://crisisync-backend-879514332143.us-central1.run.app';
 
   static const String _keyUid = 'cs_uid';
   static const String _keyName = 'cs_name';

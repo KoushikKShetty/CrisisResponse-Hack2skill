@@ -22,8 +22,8 @@ class _AlertsScreenState extends State<AlertsScreen>
   WebSocketChannel? _channel;
   late AnimationController _pulseController;
 
-  static const String _baseUrl = 'http://localhost:8080';
-  static const String _wsUrl = 'ws://localhost:8080/ws';
+  static const String _baseUrl = 'https://crisisync-backend-879514332143.us-central1.run.app';
+  static const String _wsUrl = 'wss://crisisync-backend-879514332143.us-central1.run.app/ws';
 
   @override
   void initState() {

@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late AnimationController _pulseController;
   WebSocketChannel? _channel;
 
-  static const String _wsUrl = 'ws://localhost:8080/ws';
+  static const String _wsUrl = 'wss://crisisync-backend-879514332143.us-central1.run.app/ws';
 
   @override
   void initState() {
@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     setState(() => _respondingNow = true);
     try {
       await http.post(
-        Uri.parse('http://localhost:8080/incidents/$_incidentId/accept'),
+        Uri.parse('https://crisisync-backend-879514332143.us-central1.run.app/incidents/$_incidentId/accept'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'userId': 'alex-rivera'}),
       );

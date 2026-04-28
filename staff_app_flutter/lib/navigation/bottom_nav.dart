@@ -120,7 +120,7 @@ class _BottomNavScaffoldState extends State<BottomNavScaffold>
     final zoneNameMap = {'fire': 'Kitchen Alpha', 'medical': 'Lobby', 'security': 'Lobby'};
     try {
       await http.post(
-        Uri.parse('http://localhost:8080/mock/hardware-event'),
+        Uri.parse('https://crisisync-backend-879514332143.us-central1.run.app/mock/hardware-event'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'sensorId': 'STAFF-SOS-${DateTime.now().millisecondsSinceEpoch}',
