@@ -78,7 +78,7 @@ Router buildAuthRouter() {
       // Generate unique org code
       String orgCode = _generateOrgCode();
       while (true) {
-        final snap = await dbQueryEqual(
+        final snap = await dbScan(
             'organizations', 'orgCode', orgCode);
         if (snap == null || snap.isEmpty) break;
         orgCode = _generateOrgCode();
@@ -204,7 +204,7 @@ Router buildAuthRouter() {
       }
 
       final orgs =
-          await dbQueryEqual('organizations', 'orgCode', code);
+          await dbScan('organizations', 'orgCode', code);
       if (orgs == null || orgs.isEmpty) {
         return _json(404, {
           'error':
@@ -252,7 +252,7 @@ Router buildAuthRouter() {
       }
 
       final orgs =
-          await dbQueryEqual('organizations', 'orgCode', orgCode);
+          await dbScan('organizations', 'orgCode', orgCode);
       if (orgs == null || orgs.isEmpty) {
         return _json(404, {'error': 'Invalid organization code.'});
       }

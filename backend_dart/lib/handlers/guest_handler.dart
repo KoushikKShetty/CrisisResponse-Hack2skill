@@ -8,6 +8,7 @@ import 'package:shelf_router/shelf_router.dart';
 import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import '../firebase_service.dart';
 import '../gemini_service.dart';
+import '../gemma_service.dart';
 import '../escalation_service.dart';
 import '../websocket_service.dart';
 import '../config.dart';
@@ -342,8 +343,13 @@ Router buildGuestRouter() {
 
       if (severity == 'critical') {
         incidentId = 'INC-${DateTime.now().millisecondsSinceEpoch}';
-        final actionPlan = await generateEmergencyProtocol(
-            classification['category'] as String, zoneName, message);
+        // RAG-enhanced protocol: first try Gemma 4, fall back to Gemini
+        final ragProtocol = await generateCrisisProtocol(message, zoneName);
+        final actionPlan = ragProtocol.isNotEmpty
+            ? ragProtocol.split('\n').where((l) => l.trim().isNotEmpty).take(5).toList()
+            : await generateEmergencyProtocol(
+                classification['category'] as String, zoneName, message);
+
 
         final incidentData = {
           'id': incidentId,

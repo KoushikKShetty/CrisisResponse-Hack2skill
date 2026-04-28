@@ -162,3 +162,21 @@ Future<Map<String, dynamic>?> dbQueryEqual(
   throw Exception(
       'Firebase QUERY $path failed: ${res.statusCode} ${res.body}');
 }
+
+// ── Client-side scan — reads entire node, filters in Dart ──────────
+// Use this when Firebase .indexOn rule is not configured for the field.
+Future<Map<String, dynamic>?> dbScan(
+    String path, String filterField, String filterValue) async {
+  final all = await dbGet(path);
+  if (all == null) return null;
+  final map = all as Map<String, dynamic>;
+  // Return first matching entry wrapped in its key
+  for (final entry in map.entries) {
+    final val = entry.value as Map<String, dynamic>?;
+    if (val == null) continue;
+    if (val[filterField]?.toString() == filterValue) {
+      return {entry.key: val};
+    }
+  }
+  return null;
+}

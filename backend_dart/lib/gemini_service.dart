@@ -182,3 +182,15 @@ List<String> _mockProtocol(String type, String zone) {
       ];
   }
 }
+
+// ── Generic text generation (used by news_service) ────────────────
+Future<String> generateText(String prompt) async {
+  if (_model == null) return 'BRIEFING';
+  try {
+    final response = await _model!.generateContent([Content.text(prompt)]);
+    return response.text ?? '';
+  } catch (e) {
+    print('[Gemini] generateText error: $e');
+    return 'BRIEFING';
+  }
+}
